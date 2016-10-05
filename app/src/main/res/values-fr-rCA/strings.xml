@@ -11,5 +11,13 @@
     <string name="radio_button_text">Bouton 1</string>
     <string name="check_box_text">Bouton 2</string>
     <string name="switch_text">permettre quelque chose</string>
+    <string name="login_button">Login</string>
+    <string name="dialog_title">Fini?</string>
+    <string name="dialog_message">voulez-vous terminer?</string>
+    <string name="cancel">annuler</string>
+    <string name="ok">OK</string>
+    <string name="switch_on">activer</string>
+    <string name="switch_off">eteindre</string>
+    <string name="result_messages">ListItemsActivity a passe: mes informations à partager</string>
 
 </resources>
