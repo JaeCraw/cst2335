@@ -19,5 +19,7 @@
     <string name="switch_on">activer</string>
     <string name="switch_off">eteindre</string>
     <string name="result_messages">ListItemsActivity a passe: mes informations à partager</string>
+    <string name="Start_Chat_text">Démarrer la discussion</string>
+    <string name="Send_Button_Text">envoyer</string>
 
 </resources>

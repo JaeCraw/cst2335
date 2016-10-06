@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lab 2</string>
+    <string name="app_name">Lab 4</string>
     <string name="hello_message">Hello World!</string>
     <string name="ButtonText">I\'m a button</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -18,4 +18,6 @@
     <string name="switch_on">Switch in on</string>
     <string name="switch_off">Switch is off</string>
     <string name="result_messages">ListItemsActivity passed: My information to share</string>
+    <string name="Start_Chat_text">Start Chat</string>
+    <string name="Send_Button_Text">Send</string>
 </resources>
