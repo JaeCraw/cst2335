@@ -1,8 +1,12 @@
 package com.example.jae.lab1;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +27,9 @@ public class ChatWindow extends AppCompatActivity {
     public Button sendButton;
     public ArrayList<String> list;
     public ChatAdapter messageAdapter;
+    public ChatDatabaseHelper cDH;
+    public SQLiteDatabase db;
+    protected static final String ACTIVITY_NAME = "StartActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,12 @@ public class ChatWindow extends AppCompatActivity {
         sendButton = (Button) findViewById(R.id.SendButton);
         list = new ArrayList<String>();
 
+        cDH = new ChatDatabaseHelper( this );
+        db = cDH.getWritableDatabase();
+
+        Cursor c = db.rawQuery("SELECT * FROM " + ChatDatabaseHelper.TABLE_NAME, null);
+
+        c.moveToFirst();
 
         messageAdapter = new ChatAdapter(this);
         listView.setAdapter(messageAdapter);
@@ -43,14 +56,33 @@ public class ChatWindow extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 list.add(messageBox.getText().toString());
 
+                ContentValues cValues = new ContentValues();
+                cValues.put(ChatDatabaseHelper.KEY_MESSAGE, messageBox.getText().toString());
+                db.insert(ChatDatabaseHelper.TABLE_NAME, "NullPlaceholder", cValues);
                 messageAdapter.notifyDataSetChanged();  //restarts the process of getCount() / getView()
                 //Clear the textbox
                 messageBox.setText("");
             }
         });
 
+        while(!c.isAfterLast()){
+            Log.i(ACTIVITY_NAME, "Cursor's column count=" + c.getColumnCount());
+            Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + c.getString(c.getColumnIndex(ChatDatabaseHelper.KEY_MESSAGE)));
+
+            String rowValue = c.getString(c.getColumnIndex(ChatDatabaseHelper.KEY_MESSAGE));
+            list.add(rowValue);
+            messageAdapter.notifyDataSetChanged();
+            c.moveToNext();
+        }
+
+    }
+
+    public void onDestroy(){
+        super.onDestroy();
+        db.close();
     }
 
     public class ChatAdapter extends ArrayAdapter<String>{
