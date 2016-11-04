@@ -23,6 +23,7 @@ public class StartActivity extends AppCompatActivity {
 
         Button button = (Button) findViewById(R.id.button);
         Button startChat = (Button) findViewById(R.id.startChat);
+        Button wButton = (Button) findViewById(R.id.weatherButton);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +42,17 @@ public class StartActivity extends AppCompatActivity {
                 Intent intent = new Intent(StartActivity.this, ChatWindow.class);
                 startActivity(intent);
 
+            }
+        });
+
+        wButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.i(ACTIVITY_NAME, "User clicked Check Forecast");
+
+                Intent intent = new Intent(StartActivity.this, WeatherForecast.class);
+                startActivity(intent);
             }
         });
 

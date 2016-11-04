@@ -20,4 +20,5 @@
     <string name="result_messages">ListItemsActivity passed: My information to share</string>
     <string name="Start_Chat_text">Start Chat</string>
     <string name="Send_Button_Text">Send</string>
+    <string name="StartForcast_Button">Check Forcast</string>
 </resources>
