@@ -21,4 +21,6 @@
     <string name="Start_Chat_text">Start Chat</string>
     <string name="Send_Button_Text">Send</string>
     <string name="StartForcast_Button">Check Forcast</string>
+    <string name="title_message_list">Messages</string>
+    <string name="title_message_detail">Message Detail</string>
 </resources>
